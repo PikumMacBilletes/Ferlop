@@ -159,3 +159,22 @@ body {
         max-width: 100%; /* Restauramos el ancho normal */
     }
 }
+/* Estilos para la ubicación dentro de la caja amarilla */
+
+.location-text {
+    font-weight: bold;
+    font-size: 1.1rem; /* Un poco más grande que la fecha */
+    margin-top: 10px;  /* Separación con la fecha */
+    text-transform: uppercase;
+    border-top: 1px solid #000000; /* Una línea fina negra para separar */
+    padding-top: 10px;
+    width: 100%; /* Para que la línea ocupe todo el ancho si quieres, o quítalo para ajustar al texto */
+}
+
+/* Ajuste contenedor de info */
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%; /* Para que la línea divisoria no toque los bordes de la caja */
+}
