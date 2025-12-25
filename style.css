@@ -178,3 +178,36 @@ body {
     align-items: center;
     width: 80%; /* Para que la línea divisoria no toque los bordes de la caja */
 }
+/* --- ESTILOS PÁGINA PRÓXIMAMENTE --- */
+
+.construction-box {
+    max-width: 500px; /* Que no sea demasiado ancha */
+    margin: auto;     /* Centrada */
+    padding: 40px;
+    gap: 20px;        /* Espacio entre elementos */
+}
+
+.construction-icon {
+    font-size: 4rem;  /* Icono gigante */
+    margin-bottom: 10px;
+}
+
+/* Estilo del botón "Volver" */
+.btn-back {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: transparent;
+    border: 2px solid #FFD700;
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px; /* Bordes muy redondeados */
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #FFD700;
+    color: #000000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
