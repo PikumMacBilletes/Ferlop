@@ -1,0 +1,161 @@
+body {
+    background-color: #000000;
+    color: #FFD700;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Tipografía más limpia */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 800px; /* Un poco más ancho para que quepan bien las cajas */
+}
+
+/* --- LA REJILLA BENTO --- */
+.bento-grid {
+    display: grid;
+    /* Creamos columnas flexibles. En móvil serán 2, en escritorio se adaptan */
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; /* Espacio entre las cajas */
+    margin-bottom: 40px;
+}
+
+/* Estilo base para todas las cajas */
+.bento-box {
+    background-color: #111111; /* Un gris muy oscuro para destacar sobre el fondo negro puro */
+    border: 2px solid #FFD700;
+    border-radius: 24px; /* Bordes muy redondeados estilo Bento */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none; /* Para los enlaces */
+    color: #FFD700;
+}
+
+/* Efecto Hover (al pasar el ratón) */
+.link-box:hover {
+    transform: translateY(-5px); /* Se levanta un poco */
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); /* Resplandor amarillo */
+    background-color: #1a1a1a;
+}
+
+/* --- CAJAS ESPECIALES --- */
+
+/* La caja del título ocupa todo el ancho (2 columnas) */
+.hero-box {
+    grid-column: span 2; 
+    padding: 30px;
+}
+
+.sun-icon {
+    font-size: 2rem;
+    font-weight: bold;
+    border: 3px solid #FFD700;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px #FFD700; /* Efecto sol brillante */
+}
+
+/* La caja de la cuenta atrás ocupa todo el ancho (2 columnas) */
+.countdown-box {
+    grid-column: span 2;
+    background-color: #FFD700; /* Invertimos colores para destacar */
+    color: #000000;
+    border: 2px solid #FFD700;
+}
+
+.timer-display {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums; /* Evita que los números bailen al cambiar */
+    margin: 10px 0;
+}
+
+.small-text {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.link-box {
+    aspect-ratio: 1 / 1; 
+    padding: 10px; /* Un poco de margen interno para que el logo no toque los bordes */
+    overflow: hidden; /* Si la imagen es muy grande, que no se salga */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Nueva regla para las imágenes dentro de los botones */
+.link-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* MÁGICO: Esto hace que el logo se ajuste sin deformarse */
+    pointer-events: none; /* Para que el click siempre lo reciba el botón, no la imagen */
+}
+
+/* Pie de página */
+.footer-text {
+    text-align: center;
+    opacity: 0.6;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Media Query para pantallas de ordenador/tablet (más de 768px) */
+@media (min-width: 768px) {
+    .bento-grid {
+        /* CAMBIO CLAVE: Usamos 3 columnas en lugar de 4 */
+        grid-template-columns: repeat(3, 1fr); 
+    }
+
+    /* Fila 1: El Título ocupa 2/3 del ancho */
+    .hero-box {
+        grid-column: span 2; 
+    }
+
+    /* Fila 1: La Cuenta Atrás ocupa el 1/3 restante */
+    .countdown-box {
+        grid-column: span 1; 
+        /* Ajustamos un poco el texto para que quepa bien en este espacio más pequeño */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Reducimos un poco el tamaño de los números para que no se corten */
+    .countdown-box .timer-display {
+        font-size: 1.8rem; 
+    }
+}
+/* --- CORRECCIÓN PARA 7 BOTONES --- */
+
+/* En pantallas MÓVILES (2 columnas) */
+/* Hacemos que el último botón ocupe todo el ancho para que no quede cojo */
+.link-box:last-child {
+    grid-column: span 2; 
+    /* Si la imagen se ve muy grande, podemos restringir su ancho aquí */
+    max-width: 50%; 
+    margin: 0 auto; /* Centrado */
+}
+
+/* En PANTALLAS GRANDES (3 columnas) */
+@media (min-width: 700px) {
+    /* Sobrescribimos la regla anterior */
+    .link-box:last-child {
+        grid-column: 2; /* Lo fuerza a colocarse en la columna 2 (la del centro) */
+        max-width: 100%; /* Restauramos el ancho normal */
+    }
+}
